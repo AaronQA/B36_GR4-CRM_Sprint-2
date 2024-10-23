@@ -1,4 +1,4 @@
-package com.CRM.runners;
+package com.crm.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
         features = "src/test/resources/features",
-        glue = "com/CRM/step_definitions",
+        glue = "com/crm/step_definitions",
         dryRun = true,
         tags = "",
         publish = true //generating a report with public link

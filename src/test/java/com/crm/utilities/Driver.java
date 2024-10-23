@@ -1,4 +1,4 @@
-package com.CRM.utilities;
+package com.crm.utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

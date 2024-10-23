@@ -1,6 +1,6 @@
-package com.CRM.pages;
+package com.crm.pages;
 
-import com.CRM.utilities.Driver;
+import com.crm.utilities.Driver;
 import org.openqa.selenium.support.PageFactory;
 
 
