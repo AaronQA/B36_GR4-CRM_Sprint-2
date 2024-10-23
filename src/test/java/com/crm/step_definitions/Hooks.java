@@ -1,9 +1,9 @@
-package com.CRM.step_definitions;
+package com.crm.step_definitions;
 
 
-import com.CRM.utilities.BrowserUtils;
-import com.CRM.utilities.ConfigurationReader;
-import com.CRM.utilities.Driver;
+import com.crm.utilities.BrowserUtils;
+import com.crm.utilities.ConfigurationReader;
+import com.crm.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;

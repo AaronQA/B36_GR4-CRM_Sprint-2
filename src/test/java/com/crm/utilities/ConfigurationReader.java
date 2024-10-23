@@ -1,4 +1,4 @@
-package com.CRM.utilities;
+package com.crm.utilities;
 
 import java.io.FileInputStream;
 import java.io.IOException;

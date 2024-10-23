@@ -1,4 +1,4 @@
-package com.CRM.utilities;
+package com.crm.utilities;
 
 import org.junit.Assert;
 import org.openqa.selenium.*;
