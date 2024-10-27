@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class LoginPageStepDefs {
+
     LoginPage loginPage = new LoginPage();
 
     @Given("user is on the login page")
@@ -26,6 +27,8 @@ public class LoginPageStepDefs {
     public void userShouldLandOnHomePageWith(String title) {
         BrowserUtils.verifyTitleContains(title);
     }
+
+
 
 
 }
