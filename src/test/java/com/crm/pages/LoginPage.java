@@ -9,10 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
 
-    public LoginPage(){
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
-
     @FindBy(xpath = "//input[@type='text']")
     public WebElement userInput;
 
@@ -22,13 +18,17 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//input[@type='submit']")
     public WebElement loginButton;
 
+    @FindBy(xpath = "//div[@class='errortext']")
+    public WebElement incorrect_loginOrPassword;
+
     @FindBy(xpath = "//input[@type='checkbox']")
     public WebElement rememberMe_checkbox;
 
     @FindBy(xpath = "//label[@for='USER_REMEMBER']")
-    public WebElement rememberMe_text;
+    public WebElement rememberMe_checkbox_text;
 
-
+    @FindBy(xpath = "//input[@type='password']")
+    public WebElement passwordType;
 
 
     public void login(String username, String password) {
