@@ -76,7 +76,4 @@ public class LoginPageStepDefs {
         Assert.assertTrue(loginPage.passwordType.getAttribute("type").equals(expected_attributeType));
     }
 
-
-
-
 }
