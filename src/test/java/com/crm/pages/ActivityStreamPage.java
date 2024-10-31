@@ -27,7 +27,7 @@ public class ActivityStreamPage extends BasePage{
     ) // table where elements
     public WebElement webTable_InsertTextButton_FirstElement;
 
-    @FindBy(xpath = "//tbody[@class='diskuf-placeholder-tbody']//tr[1]//td[5]") //
+    @FindBy(xpath = "//span[@class='del-but']") //
     public WebElement webTable_DeleteButton_FirstElement;
 
     public static void clicksAndCheckIfNoDisplayed(WebElement element){ // clicks on the element and checks if it displays.
