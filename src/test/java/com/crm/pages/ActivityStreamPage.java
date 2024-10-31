@@ -1,39 +1,54 @@
 package com.crm.pages;
 
 import com.crm.utilities.Driver;
-import org.openqa.selenium.By;
+import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.time.Duration;
+
 public class ActivityStreamPage extends BasePage{
 
-    @FindBy(xpath = "//span[text()='More']")
+    @FindBy(xpath = "//span[@class='feed-add-post-form-link-text']")
     public WebElement moreButton;
 
-    @FindBy(xpath = "//span[text()='Appreciation']")
+    @FindBy(xpath = "//span[@class='menu-popup-item-text'][text()='Appreciation']")
     public WebElement appreciationButton;
 
-    @FindBy(xpath = "//span[@title='Upload files']")
+    @FindBy(xpath = "//span[@id='bx-b-uploadfile-blogPostForm']")
     public WebElement uploadFilesButton;
 
     @FindBy(xpath = "//input[@name='bxu_files[]']")
     public WebElement uploadElement;
 
     @FindBy(xpath =
-            "//div[@id='diskuf-selectdialog-hzV3Wjd']//tbody[@class='diskuf-placeholder-tbody']//tr[1]//td[4]"
+            "//span[text()='Insert in text']"
     ) // table where elements
     public WebElement webTable_InsertTextButton_FirstElement;
 
     @FindBy(xpath = "//tbody[@class='diskuf-placeholder-tbody']//tr[1]//td[5]") //
     public WebElement webTable_DeleteButton_FirstElement;
 
+    public static void clicksAndCheckIfNoDisplayed(WebElement element){ // clicks on the element and checks if it displays.
 
-    public WebElement insertButton(int elementNumber){
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(0)); // temporally set as 0 to avoid wainting
 
-        return Driver.getDriver().findElement(By.xpath(
-                "//div[contains(@id, 'diskuf-selectdialog')]//tbody[@class='diskuf-placeholder-tbody']//tr[1]//td["+elementNumber+"]"
-        ));
+        try {
+            while (element.isDisplayed()) {  // clicks on every visible "Insert in text" button
+                element.click();
+            }
+        } catch (NoSuchElementException e) {
+            // catches the exception as it already deleted all the visible elements.
+            Assert.assertTrue(true);
 
-    } // clicks on the provided element
+        }finally {
+
+            // Restore the original implicit wait time after the loop
+            Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Set this to your original implicit wait time back
+
+        }
+
+    }
 
 }

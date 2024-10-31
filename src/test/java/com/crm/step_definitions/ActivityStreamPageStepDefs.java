@@ -1,9 +1,15 @@
 package com.crm.step_definitions;
 
 import com.crm.pages.ActivityStreamPage;
+import com.crm.utilities.BrowserUtils;
+import com.crm.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ActivityStreamPageStepDefs {
 
@@ -13,6 +19,9 @@ public class ActivityStreamPageStepDefs {
 
     @When("clicks on More button \\(dropdown)")
     public void clicks_on_button_dropdown() {
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(4));
+        wait.until(ExpectedConditions.elementToBeClickable(activity.moreButton));
 
         activity.moreButton.click();
 
@@ -28,19 +37,17 @@ public class ActivityStreamPageStepDefs {
     @Then("uploads supported files")
     public void uploads_supported_files() {
 
-        String testDocx = "C:\\Users\\grrra\\IdeaProjects\\B36_GR4-CRM_Sprint-2\\src\\test\\resources\\files\\TestDocx.docx";
-        String testJpeg = "C:\\Users\\grrra\\IdeaProjects\\B36_GR4-CRM_Sprint-2\\src\\test\\resources\\files\\TestJpeg.jpg";
-        String testPdf = "C:\\Users\\grrra\\IdeaProjects\\B36_GR4-CRM_Sprint-2\\src\\test\\resources\\files\\TestPdf.pdf";
-        String testPng = "C:\\Users\\grrra\\IdeaProjects\\B36_GR4-CRM_Sprint-2\\src\\test\\resources\\files\\TestPng.png";
-        String testTxt = "C:\\Users\\grrra\\IdeaProjects\\B36_GR4-CRM_Sprint-2\\src\\test\\resources\\files\\TestTxt.txt";
+        String projectPath = System.getProperty("user.dir")+"/src/test/resources/files"; // unique prop. + mid part
 
         activity.uploadFilesButton.click();
 
-        activity.uploadElement.sendKeys(testDocx);
-        activity.uploadElement.sendKeys(testJpeg);
-        activity.uploadElement.sendKeys(testPdf);
-        activity.uploadElement.sendKeys(testPng);
-        activity.uploadElement.sendKeys(testTxt);
+        activity.uploadElement.sendKeys(projectPath+"/TestDocx.docx");
+        activity.uploadElement.sendKeys(projectPath+"/TestJpeg.jpg");
+        activity.uploadElement.sendKeys(projectPath+"/TestPdf.pdf");
+        activity.uploadElement.sendKeys(projectPath+"/TestPng.png");
+        activity.uploadElement.sendKeys(projectPath+"/TestTxt.txt");
+
+        BrowserUtils.sleep(4);  // waits until all the files are uploaded.
 
         Assert.assertTrue(activity.webTable_InsertTextButton_FirstElement.isDisplayed());
         // checks if the first element has been uploaded successfully.
@@ -50,25 +57,14 @@ public class ActivityStreamPageStepDefs {
     @Then("clicks on the Insert in text button")
     public void clicks_on_the_button() {
 
-        int i = 1;
-
-        while(activity.insertButton(i).isDisplayed()){  // clicks on every visible "Insert in text" button
-
-            activity.insertButton(i).click();
-            i++;
-
-        }
+        ActivityStreamPage.clicksAndCheckIfNoDisplayed(activity.webTable_InsertTextButton_FirstElement);
 
     }
 
     @Then("clicks on remove button")
     public void clicks_on_remove_button() {
 
-        while(activity.webTable_DeleteButton_FirstElement.isDisplayed()){   // deletes every uploaded element.
-
-            activity.webTable_DeleteButton_FirstElement.click();
-
-        }
+        ActivityStreamPage.clicksAndCheckIfNoDisplayed(activity.webTable_DeleteButton_FirstElement);
 
     }
 

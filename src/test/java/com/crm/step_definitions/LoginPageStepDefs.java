@@ -76,16 +76,4 @@ public class LoginPageStepDefs {
         Assert.assertTrue(loginPage.passwordType.getAttribute("type").equals(expected_attributeType));
     }
 
-    @When("user logs in as {string} \\(StepanVersion)")
-    public void user_logs_in_as_stepan_version(String string) { // makeshift approach, haha!
-
-        String password = "UserUser";
-
-        loginPage.userInput.sendKeys(string);
-        loginPage.passwordInput.sendKeys(password);
-        loginPage.loginButton.click();
-
-    }
-
-
 }

@@ -1,11 +1,8 @@
 package com.crm.pages;
 
-import com.crm.utilities.BrowserUtils;
 import com.crm.utilities.ConfigurationReader;
-import com.crm.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
 
