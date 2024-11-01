@@ -134,7 +134,7 @@ public class ActivityStreamPageStepDefs {
 
     @Then("Error message {string} is displayed")
     public void errorMessageIsDisplayed(String arg0) {
-        Assert.assertTrue(activity.errorMessage.getText().equals(arg0));
+        Assert.assertEquals(activity.errorMessage.getText(),arg0);
     }
 
     @Then("Error message {string}...{string}  is displayed")
