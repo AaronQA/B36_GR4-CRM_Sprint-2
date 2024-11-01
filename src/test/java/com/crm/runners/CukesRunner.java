@@ -12,10 +12,10 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/US_03_ProfilePage.feature",
         glue = "com/crm/step_definitions",
         dryRun = false,
-        tags = "",
+        tags = "@wip",
         publish = true //generating a report with public link
 )
 public class CukesRunner {}

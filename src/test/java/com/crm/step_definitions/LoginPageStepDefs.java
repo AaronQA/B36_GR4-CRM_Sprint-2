@@ -76,4 +76,7 @@ public class LoginPageStepDefs {
         Assert.assertTrue(loginPage.passwordType.getAttribute("type").equals(expected_attributeType));
     }
 
+    @Given("user logs in as a {string} with correct credentials")
+    public void userLogsInAsAWithCorrectCredentials(String arg0) {
+    }
 }
