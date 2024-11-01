@@ -1,4 +1,4 @@
-@US_1
+@US_12
 Feature: As a user, I should be able to utilize Appreciation functionality: upload files, send text etc.
 
   Background: User located on the Login Page
