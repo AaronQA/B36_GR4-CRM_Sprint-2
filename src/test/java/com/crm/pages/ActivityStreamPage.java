@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.time.Duration;
 
-public class ActivityStreamPage extends BasePage{
+public class ActivityStreamPage extends BasePage {
 
     @FindBy(xpath = "//span[@class='feed-add-post-form-link-text']")
     public WebElement moreButton;
@@ -22,15 +22,13 @@ public class ActivityStreamPage extends BasePage{
     @FindBy(xpath = "//input[@name='bxu_files[]']")
     public WebElement uploadElement;
 
-    @FindBy(xpath =
-            "//span[text()='Insert in text']"
-    ) // table where elements
+    @FindBy(xpath = "//span[text()='Insert in text']") // table where elements
     public WebElement webTable_InsertTextButton_FirstElement;
 
     @FindBy(xpath = "//span[@class='del-but']") //
     public WebElement webTable_DeleteButton_FirstElement;
 
-    public static void clicksAndCheckIfNoDisplayed(WebElement element){ // clicks on the element and checks if it displays.
+    public static void clicksAndCheckIfNoDisplayed(WebElement element) { // clicks on the element and checks if it displays.
 
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(0)); // temporally set as 0 to avoid wainting
 
@@ -42,7 +40,7 @@ public class ActivityStreamPage extends BasePage{
             // catches the exception as it already deleted all the visible elements.
             Assert.assertTrue(true);
 
-        }finally {
+        } finally {
 
             // Restore the original implicit wait time after the loop
             Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Set this to your original implicit wait time back
