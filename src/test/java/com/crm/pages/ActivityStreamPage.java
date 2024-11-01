@@ -22,9 +22,7 @@ public class ActivityStreamPage extends BasePage {
     @FindBy(xpath = "//input[@name='bxu_files[]']")
     public WebElement uploadElement;
 
-    @FindBy(xpath =
-            "//span[text()='Insert in text']"
-    ) // table where elements
+    @FindBy(xpath = "//span[text()='Insert in text']") // table where elements
     public WebElement webTable_InsertTextButton_FirstElement;
 
     @FindBy(xpath = "//span[@class='del-but']") //
