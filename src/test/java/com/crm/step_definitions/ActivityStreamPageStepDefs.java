@@ -113,7 +113,8 @@ public class ActivityStreamPageStepDefs {
     }
     @Then("successfully created poll is displayed in the feed")
     public void successfully_created_poll_is_displayed_in_the_feed() {
-        wait.until(ExpectedConditions.visibilityOf(activity.titlePollFeed));
+        //wait.until(ExpectedConditions.visibilityOf(activity.titlePollFeed)); not stable solution
+        BrowserUtils.sleep(3);
         Assert.assertEquals(activity.titlePollFeed.getText(),input);
         Assert.assertEquals(activity.questionPollFeed.getText(),input);
         Assert.assertEquals(activity.answer1PollFeed.getText(),input);
@@ -143,5 +144,5 @@ public class ActivityStreamPageStepDefs {
     }
 
 
-//-------------------------------------------POLL Features START------------------------------------------------------//
+//-------------------------------------------POLL Features END------------------------------------------------------//
 }
