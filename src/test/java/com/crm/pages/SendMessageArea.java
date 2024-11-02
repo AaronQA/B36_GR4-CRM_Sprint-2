@@ -10,7 +10,7 @@ public class SendMessageArea extends BasePage {
 
 
 
-    // Method to click on the message text area
+     // Method to click on the message text area
     public void clickMessageTextArea() {
         messageTextArea.click();
     }
