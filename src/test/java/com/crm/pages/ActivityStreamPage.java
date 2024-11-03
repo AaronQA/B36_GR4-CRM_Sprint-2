@@ -10,6 +10,26 @@ import java.time.Duration;
 
 public class ActivityStreamPage extends BasePage {
 
+    @FindBy(id= "microoPostFormLHE_blogPostForm_inner")
+    public WebElement messageBox;
+
+    @FindBy(className = "feed-add-post-micro-title")
+    public WebElement messageBoxDefault;
+
+    @FindBy(xpath = "//span[contains(@class,' feed-add-post-destination-all-users')]")
+    public WebElement allEmployeesBox;
+
+    @FindBy(id = "blog-submit-button-cancel")
+    public WebElement cancelButton;
+
+    @FindBy(className = "feed-add-post-del-but")
+    public WebElement recipientBox;
+
+    @FindBy(id = "blog-submit-button-save")
+    public WebElement sendButton;
+    @FindBy(id = "feed-add-post-form-notice-blockblogPostForm")
+    public WebElement errorMessageBox;
+
     @FindBy(xpath = "//span[@class='feed-add-post-form-link-text']")
     public WebElement moreButton;
 

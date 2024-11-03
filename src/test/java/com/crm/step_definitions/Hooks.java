@@ -1,6 +1,7 @@
 package com.crm.step_definitions;
 
 
+import com.crm.pages.LoginPage;
 import com.crm.utilities.BrowserUtils;
 import com.crm.utilities.ConfigurationReader;
 import com.crm.utilities.Driver;
@@ -31,6 +32,27 @@ public class Hooks {
     public void login_scenario_before(){
         System.out.println("---> @Before: RUNNING BEFORE EACH SCENARIO");
     }
+
+    @Before (value = "@loginAsHrUser", order = 2 )
+    public void login_scenario_before_hr_user(){
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(ConfigurationReader.getProperty("hr_username"),ConfigurationReader.getProperty("hr_password"));
+    }
+
+
+    @Before (value = "@loginAsMarketingUser", order = 2 )
+    public void login_scenario_before_marketing_user(){
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(ConfigurationReader.getProperty("marketing_username"),ConfigurationReader.getProperty("marketing_password"));
+    }
+
+
+    @Before (value = "@loginAsHelpDeskUser", order = 2 )
+    public void login_scenario_before_help_desk(){
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(ConfigurationReader.getProperty("helpdesk_username"),ConfigurationReader.getProperty("helpdesk_password"));
+    }
+
 
     /*
     @After will be executed automatically after EVERY scenario in the project.
