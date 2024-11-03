@@ -124,23 +124,27 @@ public class ActivityStreamPageStepDefs {
 
     @Then("user can select multiple choice checkbox")
     public void userCanSelectMultipleChoiceCheckbox() {
+        wait.until(ExpectedConditions.elementToBeClickable(activity.multipleBox));
         activity.multipleBox.click();
         Assert.assertTrue(activity.multipleBox.isSelected());
     }
 
     @And("user cancels default delivery")
     public void userCancelsDefaultDelivery() {
+        wait.until(ExpectedConditions.elementToBeClickable(activity.defaultDelivery));
         activity.cancelDefaultDelivery.click();
     }
 
     @Then("Error message {string} is displayed")
     public void errorMessageIsDisplayed(String arg0) {
-        Assert.assertEquals(activity.errorMessage.getText(),arg0);
+        wait.until(ExpectedConditions.visibilityOf(activity.errorMessage));
+        Assert.assertEquals(activity.errorMessage.getText(), arg0);
     }
 
     @Then("Error message {string}...{string}  is displayed")
     public void errorMessageIsDisplayed(String arg0, String arg1) {
-        Assert.assertEquals(activity.errorMessage.getText(),(arg0 + input + arg1));
+        wait.until(ExpectedConditions.visibilityOf(activity.errorMessage));
+        Assert.assertEquals(activity.errorMessage.getText(), (arg0 + input + arg1));
     }
 
 
