@@ -79,7 +79,9 @@ public class ActivityStreamPageStepDefs {
 
     @When("user navigates to poll section by clicking POLL button")
     public void user_navigates_to_poll_section_by_clicking_poll_button() {
+        wait.until(ExpectedConditions.elementToBeClickable(activity.pollButton)); // needed fo Safari
         activity.pollButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(activity.sendButton));
     }
 
     @Then("user should see default delivery {string}")
@@ -90,15 +92,17 @@ public class ActivityStreamPageStepDefs {
 
     @When("user enters Message Title")
     public void user_enters_message_title() {
-    Driver.getDriver().switchTo().frame(activity.titleFieldIframe);
-    activity.titleField.sendKeys(input);
-    Driver.getDriver().switchTo().parentFrame();
+        wait.until(ExpectedConditions.visibilityOf(activity.titleFieldIframe));
+        Driver.getDriver().switchTo().frame(activity.titleFieldIframe);
+        activity.titleField.sendKeys(input);
+        Driver.getDriver().switchTo().parentFrame();
     }
 
     @When("user enters Question")
     public void user_enters_question() {
        activity.questionField.sendKeys(input);
     }
+
     @When("user enters Answer {int}")
     public void user_enters_answer(Integer int1) {
         switch (int1){
