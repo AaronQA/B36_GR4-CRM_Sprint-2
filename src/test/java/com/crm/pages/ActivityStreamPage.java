@@ -49,4 +49,59 @@ public class ActivityStreamPage extends BasePage {
 
     }
 
+
+//POLL
+
+    @FindBy(id = "feed-add-post-form-tab-vote")
+    public WebElement pollButton;
+
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement titleFieldIframe;
+
+    @FindBy(xpath = "//body[@contenteditable='true']")
+    public WebElement titleField;
+
+    @FindBy(xpath = "(//span[@id='feed-add-post-destination-item']/span/span)[1]")
+    public WebElement defaultDelivery;
+
+    @FindBy(xpath = "//*[@id='feed-add-post-destination-item']/span/span[2]")
+    public WebElement cancelDefaultDelivery;
+
+    @FindBy(id = "question_0")
+    public WebElement questionField;
+
+    @FindBy(id = "answer_0__0_")
+    public WebElement answer1Field;
+
+    @FindBy(id = "answer_0__1_")
+    public WebElement answer2Field;
+
+    @FindBy(id = "answer_0__2_")
+    public WebElement answer3Field;
+
+    @FindBy(id = "multi_0")
+    public WebElement multipleBox;
+
+    @FindBy(id = "blog-submit-button-save")
+    public WebElement sendButton;
+
+    @FindBy(xpath = "(//div[@class='feed-post-text-block-inner-inner'])[1]")
+    public WebElement titlePollFeed; // element for just created in feed poll's title
+
+    @FindBy(xpath = "(//div[@class='bx-vote-question-title'])[1]")
+    public WebElement questionPollFeed; // element for just created in feed poll's question
+
+    @FindBy(xpath = "(//label[@for])[4]")
+    public WebElement answer1PollFeed; // element for just created in feed poll's answer 1
+
+    @FindBy(xpath = "(//label[@for])[6]")
+    public WebElement answer2PollFeed; // element for just created in feed poll's answer 2
+
+    @FindBy(xpath = "(//label[@for])[8]")
+    public WebElement answer3PollFeed; // element for just created in feed poll's answer 3
+
+    @FindBy(xpath = "//*[@id='feed-add-post-form-notice-blockblogPostForm']/div/span[2]")
+    public WebElement errorMessage;
+
+
 }
