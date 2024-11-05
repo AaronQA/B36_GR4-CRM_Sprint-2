@@ -488,4 +488,36 @@ public class BrowserUtils {
     }
 
 
-}
+        // switchToNewWindow.
+
+    public static void switchToNewWindow() {
+        WebDriver driver = Driver.getDriver();
+        String originalWindow = driver.getWindowHandle();
+        Set<String> windowHandles = driver.getWindowHandles();
+
+        System.out.println("Original window handles: " + windowHandles);
+        System.out.println("Number of windows before clicking the link: " + windowHandles.size());
+
+        // Wait for the number of windows to be greater than the current count
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.numberOfWindowsToBe(windowHandles.size() + 1));
+
+        // Get the updated window handles
+        Set<String> updatedWindowHandles = driver.getWindowHandles();
+        System.out.println("Updated window handles: " + updatedWindowHandles);
+        System.out.println("Number of windows after clicking the link: " + updatedWindowHandles.size());
+
+        updatedWindowHandles.removeAll(windowHandles); // Remove the original handles
+
+        // Switch to the new window if available
+        if (!updatedWindowHandles.isEmpty()) {
+            String newWindowHandle = updatedWindowHandles.iterator().next();
+            driver.switchTo().window(newWindowHandle);
+        } else {
+            throw new RuntimeException("No new window found after clicking the link.");
+        }
+    }
+        }
+
+
+
