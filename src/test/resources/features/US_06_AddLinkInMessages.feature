@@ -13,6 +13,10 @@ Feature: As a user, I should be able to add link in message.
     And enters the "apple_url" in the URL text field
     And presses "Save" button
     And press "Send" button
+    And clicks on the hyperlink "apple_url"
+    And the link opens in a new tab
+    Then user navigates to the "apple_url"
+
 
     Examples:
       |userType|

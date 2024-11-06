@@ -8,11 +8,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Set;
 
 public class AddLinkInMessagesStepDefs {
@@ -31,36 +34,45 @@ public class AddLinkInMessagesStepDefs {
     public void entersInTheLinkTextField(String string) {
         String text = ConfigurationReader.getProperty(string);
         addLink.linkTextField.sendKeys(text);
+        BrowserUtils.sleep(1);
+
     }
 
     @And("enters the {string} in the URL text field")
     public void entersTheInTheURLTextField(String string) {
         String link = ConfigurationReader.getProperty(string);
         addLink.linkURLField.sendKeys(link);
+        BrowserUtils.sleep(1);
 
     }
-
-
-
-
 
 
     @When("presses {string} button")
     public void presses_button(String SaveButton) {
         addLink.SaveButton.click();
+        BrowserUtils.sleep(1);
 
     }
 
     @And("press {string} button")
     public void pressButton(String SendButton) {
         addLink.SendButton.click();
+        BrowserUtils.sleep(1);
     }
 
-    @Then("the specified text appears as a hyperlink in the posted message")
-    public void the_specified_text_appears_as_a_hyperlink_in_the_posted_message(String string) {
-        addLink.getLink(string).isDisplayed();
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     @And("clicks on the hyperlink {string}")
     public void clicksOnTheHyperlink(String string) {
