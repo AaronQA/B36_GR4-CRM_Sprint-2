@@ -9,8 +9,8 @@ Feature: As a user, I should be able to add link in message.
     When user logs in as "<userType>"
     And clicks on the message text area
     And from the message editing tools selects Link option (chain icon)
-    And enters text in the Link text field
-    And enters the URL in the URL text field
+    And enters "apple_text" in the Link text field
+    And enters the "apple_url" in the URL text field
     And presses "Save" button
     And press "Send" button
 
@@ -25,12 +25,15 @@ Feature: As a user, I should be able to add link in message.
     When user logs in as "<userType>"
     And clicks on the message text area
     And from the message editing tools selects Link option (chain icon)
-    And enters text in the Link text field
-    And enters the URL in the URL text field
+    And enters "tesla_text" in the Link text field
+    And enters the "tesla_url" in the URL text field
     And presses "Save" button
     And press "Send" button
-    And clicks on the hyperlink
-    Then user navigates to the correct URL
+    And clicks on the hyperlink "tesla_url"
+    And the link opens in a new tab
+    Then user navigates to the "tesla_url"
+
+
     Examples:
       |userType|
       |hr      |
@@ -43,13 +46,14 @@ Feature: As a user, I should be able to add link in message.
     When user logs in as "<userType>"
     And clicks on the message text area
     And from the message editing tools selects Link option (chain icon)
-    And enters text in the Link text field
-    And enters the URL in the URL text field
+    And enters "google_text" in the Link text field
+    And enters the "google_url" in the URL text field
     And presses "Save" button
     And press "Send" button
-    And clicks on the hyperlink
+    And clicks on the hyperlink "google_url"
     And the link opens in a new tab
-    Then user navigates to the correct URL
+    Then user navigates to the "google_url"
+
 
     Examples:
       |userType|

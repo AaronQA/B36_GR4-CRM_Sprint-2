@@ -1,5 +1,6 @@
 package com.crm.pages;
 
+import com.crm.utilities.ConfigurationReader;
 import com.crm.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -109,8 +110,7 @@ public class ActivityStreamPage extends BasePage {
 
     //AddLinkInMessages
 
-    @FindBy(id = "microoPostFormLHE_blogPostForm_inner")
-    public WebElement messageTextArea;
+
 
     @FindBy(xpath = "//*[@title='Link']")
     public WebElement linkOption;
@@ -127,10 +127,13 @@ public class ActivityStreamPage extends BasePage {
     @FindBy(id = "blog-submit-button-save")
     public WebElement SendButton;
 
-    public WebElement getLinkTesla() {
+    public WebElement getLink(String link) {
+
+        String url = ConfigurationReader.getProperty(link);
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='http://www.tesla.com']")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='"+url+"']")));
 
 
     }
-}
+
+    }

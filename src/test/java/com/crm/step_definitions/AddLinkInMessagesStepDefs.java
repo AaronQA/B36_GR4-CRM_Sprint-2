@@ -2,6 +2,7 @@ package com.crm.step_definitions;
 
 import com.crm.pages.ActivityStreamPage;
 import com.crm.utilities.BrowserUtils;
+import com.crm.utilities.ConfigurationReader;
 import com.crm.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -16,6 +17,7 @@ import java.util.Set;
 
 public class AddLinkInMessagesStepDefs {
 
+
     ActivityStreamPage addLink = new ActivityStreamPage();
     private String originalWindow;
 
@@ -25,15 +27,23 @@ public class AddLinkInMessagesStepDefs {
 
     }
 
-    @And("enters text in the Link text field")
-    public void entersTextInTheLinkTextField() {
-        addLink.linkTextField.sendKeys("Tesla");
+    @And("enters {string} in the Link text field")
+    public void entersInTheLinkTextField(String string) {
+        String text = ConfigurationReader.getProperty(string);
+        addLink.linkTextField.sendKeys(text);
     }
 
-    @And("enters the URL in the URL text field")
-    public void entersTheURLInTheURLTextField() {
-        addLink.linkURLField.sendKeys("www.tesla.com");
+    @And("enters the {string} in the URL text field")
+    public void entersTheInTheURLTextField(String string) {
+        String link = ConfigurationReader.getProperty(string);
+        addLink.linkURLField.sendKeys(link);
+
     }
+
+
+
+
+
 
     @When("presses {string} button")
     public void presses_button(String SaveButton) {
@@ -47,37 +57,39 @@ public class AddLinkInMessagesStepDefs {
     }
 
     @Then("the specified text appears as a hyperlink in the posted message")
-    public void the_specified_text_appears_as_a_hyperlink_in_the_posted_message() {
-        addLink.getLinkTesla().isDisplayed();
+    public void the_specified_text_appears_as_a_hyperlink_in_the_posted_message(String string) {
+        addLink.getLink(string).isDisplayed();
 
     }
 
-    @When("clicks on the hyperlink")
-    public void clicks_on_the_hyperlink() {
-        addLink.getLinkTesla().click();
-
-
+    @And("clicks on the hyperlink {string}")
+    public void clicksOnTheHyperlink(String string) {
+        addLink.getLink(string).click();
     }
 
-    @Then("user navigates to the correct URL")
-    public void user_navigates_to_the_correct_url() {
+
+
+    @Then("user navigates to the {string}")
+    public void user_navigates_to_the_tesla_url(String string) {
 
         WebDriver driver = Driver.getDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // Wait for the URL to be the expected one
-        wait.until(ExpectedConditions.urlContains("tesla"));
 
         // Get the actual URL after navigation
         String actualUrl = driver.getCurrentUrl();
-        String expectedUrl = "https://www.tesla.com/";
+        String expectedUrl = ConfigurationReader.getProperty(string);
+
+        wait.until(ExpectedConditions.urlContains(expectedUrl));
 
         // Output the URLs for debugging purposes
         System.out.println("Expected URL: " + expectedUrl);
         System.out.println("Actual URL: " + actualUrl);
 
         // Assert that the actual URL starts with the expected URL
-        Assert.assertTrue("The user did not navigate to the expected URL", actualUrl.startsWith(expectedUrl));
+        assert actualUrl != null;
+        Assert.assertTrue("The user did not navigate to the expected URL", actualUrl.contains(expectedUrl));
 
         // Close the new tab and switch back to the original window
         driver.close();
@@ -111,7 +123,8 @@ public class AddLinkInMessagesStepDefs {
         }
 
 
-    }
+
+}
 
 
 
