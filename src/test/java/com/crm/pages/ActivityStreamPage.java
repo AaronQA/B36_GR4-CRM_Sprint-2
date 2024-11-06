@@ -1,10 +1,14 @@
 package com.crm.pages;
 
+import com.crm.utilities.ConfigurationReader;
 import com.crm.utilities.Driver;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -104,4 +108,32 @@ public class ActivityStreamPage extends BasePage {
     public WebElement errorMessage;
 
 
-}
+    //AddLinkInMessages
+
+
+
+    @FindBy(xpath = "//*[@title='Link']")
+    public WebElement linkOption;
+
+    @FindBy(xpath = "//*[@id='linkidPostFormLHE_blogPostForm-text']")
+    public WebElement linkTextField;
+
+    @FindBy(xpath = "//*[@id='linkidPostFormLHE_blogPostForm-href']")
+    public WebElement linkURLField;
+
+    @FindBy(xpath = "//*[@value='Save']")
+    public WebElement SaveButton;
+
+    @FindBy(id = "blog-submit-button-save")
+    public WebElement SendButton;
+
+    public WebElement getLink(String link) {
+
+        String url = ConfigurationReader.getProperty(link);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='"+url+"']")));
+
+
+    }
+
+    }
