@@ -10,8 +10,22 @@ import java.time.Duration;
 
 public class ActivityStreamPage extends BasePage {
 
+
+
+    @FindBy(xpath = "//body[@contenteditable='true']")
+    public WebElement iframeBody;
+
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement iframe;
+
+    @FindBy(xpath = "//a[.='Activity Stream']")
+    public WebElement activityStream;
+
+
+
     @FindBy(id= "microoPostFormLHE_blogPostForm_inner")
     public WebElement messageBox;
+
 
     @FindBy(className = "feed-add-post-micro-title")
     public WebElement messageBoxDefault;
@@ -27,6 +41,7 @@ public class ActivityStreamPage extends BasePage {
 
     @FindBy(id = "blog-submit-button-save")
     public WebElement sendButton;
+
     @FindBy(id = "feed-add-post-form-notice-blockblogPostForm")
     public WebElement errorMessageBox;
 

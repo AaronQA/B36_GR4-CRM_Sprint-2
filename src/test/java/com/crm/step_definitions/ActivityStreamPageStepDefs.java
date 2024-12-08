@@ -3,10 +3,13 @@ package com.crm.step_definitions;
 import com.crm.pages.ActivityStreamPage;
 import com.crm.utilities.BrowserUtils;
 import com.crm.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -133,6 +136,42 @@ public class ActivityStreamPageStepDefs {
     public void theMessageWillBeCancelled() {
       Assert.assertTrue(activity.messageBoxDefault.isDisplayed());
     }
+
+    @And("user clicks {string}")
+    public void userClicks(String messageText) {
+        activity.messageText.click();
+
+
+
+    }
+
+    @And("user clicks {string} in activity stream")
+    public void userClicksInActivityStream(String activityStream) {
+        activity.messageBox.click();
+
+    }
+
+    @And("user clicks Send button")
+    public void userClicksSendButton() {
+        activity.sendButton.click();
+    }
+
+    @Then("user should be able to see message which is sent")
+    public void userShouldBeAbleToSeeMessageWhichIsSent() {
+        Assert.assertTrue(activity.messageBox.isDisplayed());
+    }
+
+
+    @And("User add text")
+    public void userAddText() {
+
+      //  activity.textarea.sendKeys("Hello");
+     WebDriver driver = Driver.getDriver().switchTo().frame(activity.iframe);
+    //activity.iframeBody.sendKeys("Hello");
+        driver.findElement(By.xpath("//body[@contenteditable='true']")).sendKeys("Hello");
+
+    }
+
 
 
 //-------------------------------------------Appreciation Features END------------------------------------------------//
